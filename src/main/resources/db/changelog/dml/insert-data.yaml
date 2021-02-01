@@ -1,0 +1,154 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-basic-vehicles
+      author: ronancruz
+      changes:
+        - insert:
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  value: "b33bc4e8-77bd-4a80-b326-46c7eb2091c2"
+              - column:
+                  name: name
+                  value: "Astra"
+              - column:
+                  name: brand
+                  value: "Chevrolet"
+              - column:
+                  name: year
+                  value: 2006
+              - column:
+                  name: description
+                  value: "Medium Hatchback 2.0"
+              - column:
+                  name: sold
+                  value: false
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  value: "7410f4c3-c84f-487c-b8da-ea8c606e61d4"
+              - column:
+                  name: name
+                  value: "Argo"
+              - column:
+                  name: brand
+                  value: "Fiat"
+              - column:
+                  name: year
+                  value: 2020
+              - column:
+                  name: description
+                  value: "Small Hatchback 1.3"
+              - column:
+                  name: sold
+                  value: true
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  value: "93b8576b-000b-4a0f-a160-301557e3154d"
+              - column:
+                  name: name
+                  value: "Fusca"
+              - column:
+                  name: brand
+                  value: "Volkswagen"
+              - column:
+                  name: year
+                  value: 1965
+              - column:
+                  name: description
+                  value: "Small Air Engine 1.3"
+              - column:
+                  name: sold
+                  value: true
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: vehicle
+            columns:
+              - column:
+                  name: id
+                  value: "063a890c-89d3-46f3-978e-5c10a81990af"
+              - column:
+                  name: name
+                  value: "Maverick"
+              - column:
+                  name: brand
+                  value: "Ford"
+              - column:
+                  name: year
+                  value: 1975
+              - column:
+                  name: description
+                  value: "Coupe V8"
+              - column:
+                  name: sold
+                  value: false
+              - column:
+                  name: created_at
+                  value: now()
+
+  - changeSet:
+      id: insert-basic-brands
+      author: ronancruz
+      changes:
+        - insert:
+            tableName: brand
+            columns:
+              - column:
+                  name: id
+                  value: "5e6f687f-c36e-47df-a7b7-58321a4b0934"
+              - column:
+                  name: name
+                  value: "Chevrolet"
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: brand
+            columns:
+              - column:
+                  name: id
+                  value: "6c470ecd-0c79-4aa2-8002-ea2c890c742a"
+              - column:
+                  name: name
+                  value: "Fiat"
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: brand
+            columns:
+              - column:
+                  name: id
+                  value: "9cec5454-6712-4656-9910-8b9e484a83a4"
+              - column:
+                  name: name
+                  value: "Volkswagen"
+              - column:
+                  name: created_at
+                  value: now()
+        - insert:
+            tableName: brand
+            columns:
+              - column:
+                  name: id
+                  value: "661cc0fe-31df-4bac-96bd-e60524becab9"
+              - column:
+                  name: name
+                  value: "Ford"
+              - column:
+                  name: created_at
+                  value: now()

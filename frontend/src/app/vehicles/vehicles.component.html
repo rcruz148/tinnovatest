@@ -1,0 +1,71 @@
+<igx-input-group type="search" class="search">
+    <igx-prefix>
+        <igx-icon>search</igx-icon>
+    </igx-prefix>
+    <input #search igxInput placeholder="Search Vehicles" [(ngModel)]="searchVehicle" (keyup)="getVehicles()">
+    <igx-suffix>
+        <igx-icon *ngIf="search.value.length > 0" (click)="clearSearch()">clear</igx-icon>
+        <igx-icon igxListAction color="blue" (click)="new()">fiber_new</igx-icon>
+    </igx-suffix>
+</igx-input-group>
+
+<div class="form-container" *ngIf="showForm">
+    <article class="sample-column">
+        <form class="input-group-form" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <igx-input-group> 
+                    <input igxInput name="name" type="text" formControlName="name" />
+                    <label igxLabel for="name">Name</label>
+                    <igx-suffix>
+                        <igx-icon>person</igx-icon>
+                    </igx-suffix>
+                </igx-input-group>
+                <igx-input-group class="col"> 
+                    <input igxInput name="brand" type="text" formControlName="brand" />
+                    <label igxLabel for="brand">Brand</label>
+                    <igx-suffix>
+                        <igx-icon>person</igx-icon>
+                    </igx-suffix>
+                </igx-input-group>
+                <igx-input-group class="col">
+                    <input igxInput name="year" type="number" formControlName="year" />
+                    <label igxLabel for="year">Year</label>
+                    <igx-suffix>
+                        <igx-icon>person</igx-icon>
+                    </igx-suffix>
+                </igx-input-group>
+                <igx-input-group class="col">
+                    <input igxInput name="description" type="text" formControlName="description" />
+                    <label igxLabel for="description">Description</label>
+                    <igx-suffix>
+                        <igx-icon>person</igx-icon>
+                    </igx-suffix>
+                </igx-input-group>
+                <div style="text-align: right">
+                    <button class="form-container" igxButton="outlined" igxRipple (click)="clear()">Cancel</button>
+                    <button class="form-container" igxButton="raised" igxRipple
+                        type="submit" [disabled]="!vehicleForm.valid">Save</button>
+                </div>
+            </div>
+        </form>
+    </article>
+</div>
+
+<igx-list class="list">
+    <ng-template igxEmptyList>
+        <p class="empty">No vehicles!</p>
+    </ng-template>
+    <ng-template igxDataLoading>
+        <p class="loading">Looking for vehicles...</p>
+    </ng-template>
+    <igx-list-item isHeader="true">
+        Vehicles
+    </igx-list-item>
+    <igx-list-item *ngFor="let vehicle of vehicles">
+        <h4 igxListLineTitle>{{ vehicle.brand }} {{ vehicle.name }} {{ vehicle.year }}</h4>
+        <p igxListLineSubTitle>{{ vehicle.description }}</p>
+        <igx-icon igxListAction [color]="vehicle.isSold ? 'red' : 'green'" (click)="toggleSold(vehicle)">sell</igx-icon>
+        <igx-icon igxListAction color="lightgray" (click)="load(vehicle)">edit</igx-icon>
+        <igx-icon igxListAction color="lightgray" (click)="delete(vehicle)">delete</igx-icon>
+    </igx-list-item>
+</igx-list>

@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-vehicle
+      author: ronancruz
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: vehicle
+      changes:
+        createTable:
+          tableName: vehicle
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                  primaryKey: true
+                  primaryKeyName: pk_vehicle
+                name: id
+                type: UUID
+            - column:
+                constraints:
+                  nullable: false
+                name: name
+                type: VARCHAR
+            - column:
+                constraints:
+                  nullable: false
+                name: brand
+                type: VARCHAR(20)
+            - column:
+                constraints:
+                  nullable: false
+                name: year
+                type: INT
+            - column:
+                name: description
+                type: VARCHAR(100)
+            - column:
+                name: sold
+                type: BOOLEAN
+                defaultValueBoolean: false
+            - column:
+                name: created_at
+                constraints:
+                    nullable: false
+                type: datetime
+            - column:
+                name: updated_at
+                type: datetime
+
+  - changeSet:
+      id: create-table-brand
+      author: ronancruz
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: brand
+      changes:
+        createTable:
+          tableName: brand
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                  primaryKey: true
+                  primaryKeyName: pk_brand
+                name: id
+                type: UUID
+            - column:
+                constraints:
+                  nullable: false
+                name: name
+                type: VARCHAR
+            - column:
+                name: created_at
+                constraints:
+                  nullable: false
+                type: datetime
+            - column:
+                name: updated_at
+                type: datetime
